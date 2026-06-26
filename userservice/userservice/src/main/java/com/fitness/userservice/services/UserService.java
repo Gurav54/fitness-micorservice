@@ -7,6 +7,8 @@ import com.fitness.userservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserService {
@@ -52,5 +54,15 @@ public class UserService {
         response.setUpdatedAt(savedUser.getUpdatedAt());
 
         return response;
+    }
+
+    public Boolean existByUserId(String userId) {
+
+       return userRepository.existsById(userId);
+    }
+
+    public List<User> getAllusers() {
+        
+        return userRepository.findAll();
     }
 }
